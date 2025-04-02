@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.foodcouriers.ui.theme.FoodCouriersTheme
-import com.foodcouriers.ui.screens.AppNavigator
+import com.foodcouriers.ui.navigator.AppNavigator
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
