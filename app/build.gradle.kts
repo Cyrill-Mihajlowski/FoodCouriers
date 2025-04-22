@@ -45,7 +45,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("androidx.compose.foundation:foundation:1.7.8")
     implementation("androidx.compose.ui:ui:1.7.8")
-    implementation("androidx.compose.material3:material3:1.3.1")
+    implementation("androidx.compose.material3:material3:1.3.2")
     // TODO: Custom implementation
 
     implementation(libs.androidx.core.ktx)
