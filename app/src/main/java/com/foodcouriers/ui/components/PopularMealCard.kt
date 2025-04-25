@@ -13,8 +13,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.foodcouriers.ui.theme.AppColors
 
 @Composable
 fun PopularMealCard(
@@ -27,13 +29,13 @@ fun PopularMealCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        shape = RoundedCornerShape(16.dp),
+            .padding(vertical = 2.dp),
+        shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Row(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.surface)
+                .background(AppColors.White)
                 .padding(8.dp)
                 .clickable { onClick() },
             verticalAlignment = Alignment.CenterVertically
@@ -41,9 +43,9 @@ fun PopularMealCard(
             Image(
                 painter = painterResource(id = imageResId),
                 contentDescription = name,
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
-                    .size(128.dp)
+                    .size(64.dp)
                     .clip(RoundedCornerShape(8.dp))
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -68,7 +70,7 @@ fun PopularMealCard(
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = price,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                 color = MaterialTheme.colorScheme.primary
             )
         }

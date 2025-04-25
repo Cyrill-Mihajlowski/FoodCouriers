@@ -15,11 +15,26 @@ val Poppins = FontFamily(
 )
 
 object CustomStyles {
-    val headline = TextStyle(
+    val filterItems = TextStyle(
         fontFamily = Poppins,
-        fontWeight = FontWeight.Normal,
-        fontSize = 28.sp,
-        lineHeight = 36.sp,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+//        lineHeight = 36.sp,
 //        color = AppColors.White
+    )
+    val menuItems = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        color = AppColors.Dark
+//        lineHeight = 36.sp,
+    )
+
+    val searchField = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp,
+        color = AppColors.Dark_2
+//        lineHeight = 36.sp,
     )
 }

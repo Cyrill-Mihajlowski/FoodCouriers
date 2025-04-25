@@ -22,14 +22,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.foodcouriers.R
+import com.foodcouriers.ui.theme.AppColors
 
 @Composable
 fun ProductCard(
     imageResId: Int,
+    rating: String,
     name: String,
     description: String,
     price: String,
@@ -40,19 +44,37 @@ fun ProductCard(
             .width(160.dp)
             .padding(8.dp),
         shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(8.dp)
+        elevation = CardDefaults.cardElevation(6.dp)
     ) {
         Column(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.surface)
+                .background(AppColors.White)
         ) {
+            Row(
+                modifier = Modifier.padding(horizontal = 16.dp).padding(top = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_star),
+                    contentDescription = "Star",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+//                        .size(100.dp)
+                )
+                Text(
+                    text = rating,
+                    modifier = Modifier.padding(start = 4.dp)
+                )
+            }
             Image(
                 painter = painterResource(id = imageResId),
                 contentDescription = name,
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .padding(top = 8.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Column(
@@ -77,7 +99,10 @@ fun ProductCard(
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 8.dp)
                 ) {
                     Text(
                         text = price,
@@ -89,10 +114,11 @@ fun ProductCard(
                         onClick = onAddToCart,
                         modifier = Modifier.size(24.dp)
                     ) {
+
                         Icon(
-                            imageVector = Icons.Default.Add,
+                            painter = painterResource(R.drawable.ic_plus),
                             contentDescription = "Add to cart",
-                            tint = MaterialTheme.colorScheme.primary
+                            tint = AppColors.Pink
                         )
                     }
                 }

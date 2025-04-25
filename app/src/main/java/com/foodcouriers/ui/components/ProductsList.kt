@@ -8,12 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.foodcouriers.R
+import com.foodcouriers.domain.models.ProductItems
 
 @Composable
 fun ProductsList() {
     val products = listOf(
-        Triple(R.drawable.burger_1, "Chicken Burger", "$20.00"),
-        Triple(R.drawable.burger_2, "Cheese Burger", "$15.00")
+        ProductItems(imageResId = R.drawable.burger_1, name = "Chicken Burger", price = "$20.00", rating = "3.8"),
+        ProductItems(imageResId = R.drawable.burger_2, name = "Cheese Burger", price = "$15.00", rating = "4.5"),
+        ProductItems(imageResId = R.drawable.burger_1, name = "Chicken Burger", price = "$35.00", rating = "4.8"),
     )
 
     LazyRow(
@@ -23,10 +25,11 @@ fun ProductsList() {
     ) {
         items(products) { product ->
             ProductCard(
-                imageResId = product.first,
-                name = product.second,
+                imageResId = product.imageResId,
+                name = product.name,
+                rating = product.rating,
+                price = product.price,
                 description = "100 gr chicken + tomato + cheese + lettuce",
-                price = product.third,
                 onAddToCart = { /* TODO: добавить логику добавления в корзину */ }
             )
         }

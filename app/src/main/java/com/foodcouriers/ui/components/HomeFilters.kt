@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.foodcouriers.ui.theme.CustomStyles
 
 @Composable
 fun HomeFilters(
@@ -17,7 +18,7 @@ fun HomeFilters(
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 2.dp)
+            .padding(vertical = 4.dp)
     ) {
         itemsIndexed(categories) { index, category ->
             CategoryButton(

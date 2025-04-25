@@ -14,7 +14,12 @@ private val DarkColorScheme = darkColorScheme(
 
 private val LightColorScheme = lightColorScheme(
     primary = AppColors.Pink,
-    background = AppColors.White,
+    secondary = AppColors.Yellow,
+    background = AppColors.White_2,
+//    onBackground = AppColors.Dark,
+    surface = AppColors.White,
+    onSurface = AppColors.Dark
+
 )
 
 @Composable
