@@ -13,15 +13,15 @@ import com.foodcouriers.domain.models.ProductItems
 @Composable
 fun ProductsList() {
     val products = listOf(
-        ProductItems(imageResId = R.drawable.burger_1, name = "Chicken Burger", price = "$20.00", rating = "3.8"),
-        ProductItems(imageResId = R.drawable.burger_2, name = "Cheese Burger", price = "$15.00", rating = "4.5"),
-        ProductItems(imageResId = R.drawable.burger_1, name = "Chicken Burger", price = "$35.00", rating = "4.8"),
+        ProductItems(imageResId = R.drawable.burger_1, name = "Chicken Burger", price = "$ 20.00", rating = "3.8"),
+        ProductItems(imageResId = R.drawable.burger_2, name = "Cheese Burger", price = "$ 15.00", rating = "4.5"),
+        ProductItems(imageResId = R.drawable.burger_1, name = "Chicken Burger", price = "$ 35.00", rating = "4.8"),
     )
 
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(start = 16.dp)
     ) {
         items(products) { product ->
             ProductCard(
@@ -29,7 +29,7 @@ fun ProductsList() {
                 name = product.name,
                 rating = product.rating,
                 price = product.price,
-                description = "100 gr chicken + tomato + cheese + lettuce",
+                description = "100 gr chicken + tomato + cheese  Lettuce",
                 onAddToCart = { /* TODO: добавить логику добавления в корзину */ }
             )
         }

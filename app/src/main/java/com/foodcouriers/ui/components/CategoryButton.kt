@@ -1,11 +1,10 @@
 package com.foodcouriers.ui.components
 
-import android.R.attr.text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -13,7 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,7 +21,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
-import com.foodcouriers.ui.theme.FoodCouriersTheme
 
 @Composable
 fun CategoryButton(
@@ -32,8 +29,8 @@ fun CategoryButton(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    val backgroundColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.White
-    val textColor = if (isSelected) Color.White else Color.Black
+    val backgroundColor = if (isSelected) Color(0xFFD61355) else Color.White
+    val textColor = if (isSelected) Color.White else Color(0xFF0D0D0D)
 
     Button(
         onClick = onClick,
@@ -42,13 +39,23 @@ fun CategoryButton(
         ),
         modifier = Modifier
             .padding(start = 18.dp)
-            .height(47.dp)
+            .background(
+                color = backgroundColor,
+                shape = RoundedCornerShape(8.dp)
+            )
             .border(
-                width = (1).dp,
+                width = if (isSelected) 0.dp else 1.dp,
                 color = AppColors.Pink_3,
                 shape = RoundedCornerShape(8.dp)
-            ) ,
-        shape = RoundedCornerShape(8.dp)
+            ),
+
+        shape = RoundedCornerShape(8.dp),
+        contentPadding = PaddingValues(
+            start = 14.dp,
+            end = 16.dp,
+            top = 0.dp,
+            bottom = 0.dp
+        )
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically

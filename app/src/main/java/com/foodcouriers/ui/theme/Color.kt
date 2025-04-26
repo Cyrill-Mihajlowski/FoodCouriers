@@ -10,8 +10,10 @@ object AppColors {
     val Pink_2 = Color(0xFFFFF0F0)
     val Pink_3 = Color(0xFFFF0000)
     val Gray = Color(0xFF3B3B3B)
+    val Gray_2 = Color(0xFF4B5563)
     val Dark = Color(0xFF000000)
     val Dark_2 = Color(0x80000000)
+    val Dark_3 = Color(0xFF0D0D0D)
     val Yellow = Color(0xFFEEFF32)
     val Transparent = Color(0x00FFFFFF)
     val gradientBrush = Brush.linearGradient(
