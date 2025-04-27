@@ -43,7 +43,7 @@ fun BottomNavigationBar(navController: NavHostController) {
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .padding(bottom = 8.dp)
+            .padding(bottom = 6.dp)
     ) {
         Row(
             modifier = Modifier
@@ -71,7 +71,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                             color = if (isSelected) AppColors.Pink_2 else AppColors.Transparent,
                             shape = RoundedCornerShape(12.dp),
                         )
-                        .padding(horizontal = 20.dp, vertical = 14.dp),
+                        .padding(horizontal = 18.dp, vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
 
                     ) {

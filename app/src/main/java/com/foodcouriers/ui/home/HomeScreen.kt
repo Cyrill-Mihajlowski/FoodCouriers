@@ -17,25 +17,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.foodcouriers.R
+import com.foodcouriers.data.AppDataMocap
+import com.foodcouriers.ui.components.BottomNavigationBar
 import com.foodcouriers.ui.components.HomeFilters
 import com.foodcouriers.ui.components.HomeTopBar
-import com.foodcouriers.ui.components.ImageCarousel
-import com.foodcouriers.ui.components.PopularMealsSection
-import com.foodcouriers.ui.components.ProductsList
-import com.foodcouriers.ui.components.SearchField
+import com.foodcouriers.ui.components.HomeCarousel
+import com.foodcouriers.ui.components.HomeMenuList
+import com.foodcouriers.ui.components.HomeFiltersCard
+import com.foodcouriers.ui.components.HomeSearchBar
 
 @Composable
-fun HomeScreen() {
-    val categories = listOf(
-        R.drawable.ic_burger to "Burger",
-        R.drawable.ic_pizza to "Pizza",
-        R.drawable.ic_sandwich to "Sandwich"
-    )
+fun HomeScreen(
+    navController: NavHostController
+) {
     var selectedCategoryIndex = remember { mutableStateOf(0) }
 
     Scaffold(
         topBar = { HomeTopBar() },
+        bottomBar = {
+            BottomNavigationBar(navController = navController)
+
+        }
     ) { padding ->
         Box(
             modifier = Modifier
@@ -53,29 +57,28 @@ fun HomeScreen() {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 14.dp)
                     .padding(padding)
-                    .padding(bottom = 70.dp)
             ) {
                 item {
                     Spacer(modifier = Modifier.height(16.dp))
-                    SearchField()
+                    HomeSearchBar()
                     Spacer(modifier = Modifier.height(4.dp))
-                    ImageCarousel(
-                        images = listOf(
-                            R.drawable.burger_1,
-                            R.drawable.burger_1,
+                    HomeCarousel(
+                        listOf(
+                            R.drawable.pc_carusel,
+                            R.drawable.pc_carusel,
+                            R.drawable.pc_carusel,
                         )
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     HomeFilters(
-                        categories = categories,
+                        categories = AppDataMocap.categories,
                         selectedCategoryIndex = selectedCategoryIndex.value,
                         onCategorySelected = { selectedCategoryIndex.value = it }
                     )
-                    ProductsList()
+                    HomeFiltersCard(AppDataMocap.products)
                     Spacer(modifier = Modifier.height(4.dp))
-                    PopularMealsSection()
+                    HomeMenuList(AppDataMocap.MealMenuCards)
                 }
             }
         }

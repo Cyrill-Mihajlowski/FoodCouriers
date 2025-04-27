@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.components.BottomNavigationBar
 import com.foodcouriers.ui.home.HomeScreen
+import com.foodcouriers.ui.profile.ProfileScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -19,16 +20,16 @@ fun AppNavigator() {
 
     val navController = rememberNavController()
 
-    val currentBackStackEntry = navController.currentBackStackEntryAsState()
-    val currentRoute = currentBackStackEntry.value?.destination?.route
+//    val currentBackStackEntry = navController.currentBackStackEntryAsState()
+//    val currentRoute = currentBackStackEntry.value?.destination?.route
 
-    Scaffold(
-        bottomBar = {
-            if (currentRoute != Screen.Onboard.route) {
-                BottomNavigationBar(navController = navController)
-            }
-        }
-    ) {
+//    Scaffold(
+//        bottomBar = {
+//            if (currentRoute != Screen.Onboard.route) {
+//                BottomNavigationBar(navController = navController)
+//            }
+//        }
+//    ) {
         NavHost(
             navController = navController,
             startDestination = Screen.Home.route,
@@ -39,10 +40,10 @@ fun AppNavigator() {
 //                )
             }
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(navController = navController)
             }
             composable(Screen.Profile.route) {
-//                ProfileScreen()
+                ProfileScreen(navController = navController)
             }
             composable(Screen.Chat.route) {
 //                ChatScreen()
@@ -52,4 +53,4 @@ fun AppNavigator() {
             }
         }
     }
-}
+//}

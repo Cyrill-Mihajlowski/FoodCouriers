@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -15,14 +16,71 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.foodcouriers.R
+import com.foodcouriers.domain.models.MealItems
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
+import com.foodcouriers.ui.theme.Dimens
 
 @Composable
-fun PopularMealCard(
+fun HomeMenuList(products: List<MealItems>) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = Dimens.ExtraLargePadding)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp, bottom = 4.dp),
+
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = "Popular Meal Menu",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End,
+                modifier = Modifier.clickable(onClick = { })
+            ) {
+                Text(
+                    text = "See All",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = AppColors.Dark_2,
+                    modifier = Modifier.padding(end = 8.dp)
+                )
+                Image(
+                    painter = painterResource(R.drawable.ic_right_arrow),
+                    contentDescription = "arrow",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .size(12.dp)
+                )
+            }
+        }
+
+        products.forEach { product ->
+            MealCard(
+                imageResId = product.imageResId,
+                title = product.title,
+                text = product.text,
+                price = product.price,
+                onClick = { /* TODO: обработать клик по карточке */ }
+            )
+        }
+    }
+}
+
+@Composable
+fun MealCard(
     imageResId: Int,
-    name: String,
-    description: String,
+    title: String,
+    text: String,
     price: String,
     onClick: () -> Unit
 ) {
@@ -31,7 +89,7 @@ fun PopularMealCard(
             .fillMaxWidth()
             .padding(vertical = 4.dp),
         shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(8.dp)
+        elevation = CardDefaults.cardElevation(6.dp)
     ) {
         Row(
             modifier = Modifier
@@ -42,7 +100,7 @@ fun PopularMealCard(
         ) {
             Image(
                 painter = painterResource(id = imageResId),
-                contentDescription = name,
+                contentDescription = title,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(64.dp)
@@ -53,7 +111,7 @@ fun PopularMealCard(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = name,
+                    text = title,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface,
                     maxLines = 1,
@@ -61,7 +119,7 @@ fun PopularMealCard(
                     modifier = Modifier.padding(start = 8.dp)
                 )
                 Text(
-                    text = description,
+                    text = text,
                     style = CustomStyles.PopularMealCardText,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,

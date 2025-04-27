@@ -22,9 +22,10 @@ import androidx.compose.ui.unit.dp
 import com.foodcouriers.R
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
+import com.foodcouriers.ui.theme.Dimens
 
 @Composable
-fun SearchField() {
+fun HomeSearchBar() {
     val gradientBrush = Brush.horizontalGradient(
         colors = listOf(
             Color(0xFFFFF0F0),
@@ -56,7 +57,7 @@ fun SearchField() {
             .fillMaxWidth()
             .heightIn(max = 46.dp)
             .wrapContentHeight(Alignment.CenterVertically)
-            .padding(horizontal = 20.dp)
+            .padding(horizontal = Dimens.ExtraLargePadding)
             .background(
                 brush = gradientBrush,
                 shape = RoundedCornerShape(8.dp)

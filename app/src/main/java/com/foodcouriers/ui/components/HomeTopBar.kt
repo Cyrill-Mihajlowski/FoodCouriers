@@ -36,13 +36,14 @@ fun HomeTopBar(modifier: Modifier = Modifier) {
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .clickable { /* TODO: обработка нажатия */ }
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_location),
                 contentDescription = "Menu",
                 modifier = Modifier
-                    .size(12.dp)
-                    .clickable { /* TODO: обработка нажатия */ },
+                    .size(12.dp),
                 tint = AppColors.Pink
             )
             Text(
@@ -57,7 +58,8 @@ fun HomeTopBar(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .size(32.dp)
                 .clip(CircleShape)
-                .background(AppColors.White),
+                .background(AppColors.White)
+                .clickable { /* TODO: обработка нажатия */ }
         )
     }
 }

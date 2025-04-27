@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,12 +11,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -25,8 +27,32 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.foodcouriers.R
+import com.foodcouriers.domain.models.ProductItems
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
+import com.foodcouriers.ui.theme.Dimens
+
+@Composable
+fun HomeFiltersCard(
+    products: List<ProductItems>
+) {
+    LazyRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = Dimens.ExtraLargePadding - 4.dp)
+    ) {
+        items(products) { product ->
+            ProductCard(
+                imageResId = product.imageResId,
+                name = product.name,
+                rating = product.rating,
+                price = product.price,
+                description = "100 gr chicken + tomato + cheese  Lettuce",
+                onAddToCart = { /* TODO: добавить логику добавления в корзину */ }
+            )
+        }
+    }
+}
 
 @Composable
 fun ProductCard(
@@ -40,7 +66,7 @@ fun ProductCard(
     Card(
         modifier = Modifier
             .width(200.dp)
-            .padding(top = 4.dp, end = 14.dp, start = 4.dp),
+            .padding(top = 4.dp, end = Dimens.LargePadding, start = 4.dp),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
     ) {

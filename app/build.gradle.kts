@@ -43,8 +43,10 @@ dependencies {
     // TODO: Custom implementation
     implementation("androidx.navigation:navigation-compose:2.8.9")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation("androidx.compose.foundation:foundation:1.7.8")
-    implementation("androidx.compose.ui:ui:1.7.8")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+    implementation("androidx.compose.foundation:foundation:1.8.0")
+//    implementation("androidx.compose.foundation:foundation-pager:1.4.3")
+    implementation("androidx.compose.ui:ui:1.8.0")
     implementation("androidx.compose.material3:material3:1.3.2")
     // TODO: Custom implementation
 
