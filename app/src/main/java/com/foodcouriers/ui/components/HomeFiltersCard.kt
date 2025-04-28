@@ -2,6 +2,7 @@ package com.foodcouriers.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -74,7 +75,7 @@ fun ProductCard(
             modifier = Modifier
                 .background(AppColors.White)
                 .padding(start = 6.dp, end = 6.dp, bottom = 10.dp)
-
+                .clickable(onClick = { })
         ) {
             Row(
                 modifier = Modifier
@@ -129,6 +130,7 @@ fun ProductCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
+                        .clickable(onClick = { })
                 ) {
                     Text(
                         text = price,

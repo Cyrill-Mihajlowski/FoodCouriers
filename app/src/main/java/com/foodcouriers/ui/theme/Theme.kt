@@ -5,21 +5,14 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-// TODO: Mockup Scheme
-private val DarkColorScheme = darkColorScheme(
-    primary = AppColors.Dark,
-    background = AppColors.Dark,
-    onBackground = AppColors.Dark
-)
+private val DarkColorScheme = darkColorScheme()
 
 private val LightColorScheme = lightColorScheme(
     primary = AppColors.Pink,
     secondary = AppColors.Yellow,
     background = AppColors.White_2,
-//    onBackground = AppColors.Dark,
     surface = AppColors.White,
     onSurface = AppColors.Dark
-
 )
 
 @Composable

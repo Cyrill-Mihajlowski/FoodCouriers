@@ -26,14 +26,27 @@ import com.foodcouriers.domain.models.NavigationItem
 import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
-    val items = listOf(
-        NavigationItem(Screen.Home.route, "Home", R.drawable.ic_nav_home),
-        NavigationItem(Screen.Profile.route, "Profile", R.drawable.ic_nav_proffile),
-        NavigationItem(Screen.Order.route, "Order", R.drawable.ic_nav_buy),
-        NavigationItem(Screen.Chat.route, "Chat", R.drawable.ic_nav_chat)
+    val nav_items = listOf(
+        NavigationItem(
+            Screen.Home.route,
+            stringResource(R.string.nav_home),
+            R.drawable.ic_nav_home
+        ),
+        NavigationItem(
+            Screen.Profile.route,
+            stringResource(R.string.nav_profile),
+            R.drawable.ic_nav_proffile
+        ),
+        NavigationItem(
+            Screen.Order.route,
+            stringResource(R.string.nav_order),
+            R.drawable.ic_nav_buy
+        ),
+        NavigationItem(Screen.Chat.route, stringResource(R.string.nav_chat), R.drawable.ic_nav_chat)
     )
 
     val currentBackStackEntry = navController.currentBackStackEntryAsState()
@@ -56,7 +69,7 @@ fun BottomNavigationBar(navController: NavHostController) {
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            items.forEach { item ->
+            nav_items.forEach { item ->
                 val isSelected = currentRoute == item.route
                 Row(
                     modifier = Modifier

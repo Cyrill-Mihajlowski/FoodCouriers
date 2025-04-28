@@ -11,6 +11,7 @@ object AppColors {
     val Pink_3 = Color(0xFFFF0000)
     val Gray = Color(0xFF3B3B3B)
     val Gray_2 = Color(0xFF4B5563)
+    val Gray_3 = Color(0xFFE2E2E2)
     val Dark = Color(0xFF000000)
     val Dark_2 = Color(0x80000000)
     val Dark_3 = Color(0xFF0D0D0D)
@@ -23,7 +24,3 @@ object AppColors {
         )
     )
 }
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)

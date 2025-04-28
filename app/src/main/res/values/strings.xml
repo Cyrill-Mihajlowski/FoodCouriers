@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">FoodCouriers</string>
+    <!-- TODO: App name -->
+    <string name="app_name">Food Couriers</string>
+
+    <!-- TODO: HomeFilters categores -->
+    <string name="category_burger">Burger</string>
+    <string name="category_pizza">Pizza</string>
+    <string name="category_sandwich">Sandwich</string>
+
+    <!-- TODO: OnboardScreen elements  -->
+    <string name="button_next">Next</string>
+    <string name="button_skip">Skip</string>
+    <string name="button_sign_up">Sign Up</string>
+    <string name="button_sign_up_with_google">Sign up with Google</string>
+    <string name="button_login">Login</string>
+    <string name="checkbox_create_account">Create Account</string>
+    <string name="checkbox_login">Login</string>
+    <string name="textbutton_forget">Forget Password?</string>
+    <string name="input_full_name">Full Name</string>
+    <string name="input_email">Email address</string>
+    <string name="input_password">Password</string>
+    <string name="slide_title">Select the Favorities Menu</string>
+    <string name="slide_text">Now eat well, dont leave the house, You can choose your favorite food only with ne click</string>
+    <string name="slide_title_2">Good food at a cheap price</string>
+    <string name="slide_text_2">You can eat at expensive restaurants with affordable price</string>
+
+    <!-- TODO: BottomNavigationBar navigation items -->
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_order">Order</string>
+    <string name="nav_chat">Chat</string>
 </resources>

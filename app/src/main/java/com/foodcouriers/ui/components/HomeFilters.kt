@@ -36,7 +36,6 @@ fun HomeFilters(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = Dimens.ExtraLargePadding, bottom = Dimens.SmallPadding)
-
     ) {
         itemsIndexed(categories) { index, category ->
             CategoryButton(

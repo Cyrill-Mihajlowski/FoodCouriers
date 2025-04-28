@@ -2,6 +2,7 @@ package com.foodcouriers.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,10 +20,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.foodcouriers.R
+import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.Dimens
 
 @Composable
 fun HomeCarousel(imageList: List<Int>) {
+
 
     val pagerState = rememberPagerState { imageList.size }
 
@@ -30,7 +34,7 @@ fun HomeCarousel(imageList: List<Int>) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = Dimens.Large2Padding)
-            .padding(bottom = Dimens.Large2Padding)
+            .padding(top = Dimens.Medium2Padding, bottom = Dimens.Large2Padding)
     ) {
         HorizontalPager(
             state = pagerState,
@@ -43,11 +47,9 @@ fun HomeCarousel(imageList: List<Int>) {
                 painter = painterResource(id = imageList[page]),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth().clickable(onClick = { })
             )
         }
-
-//        Spacer(modifier = Modifier.height(Dimens.LargePadding))
 
         PagerIndicator(
             currentPage = pagerState.currentPage,
@@ -75,7 +77,7 @@ fun PagerIndicator(
                     .padding(horizontal = 4.dp)
                     .size(if (isSelected) 9.dp else 9.dp)
                     .background(
-                        color = if (isSelected) Color.Red else Color.Gray,
+                        color = if (isSelected) Color.Red else AppColors.Gray_3,
                         shape = androidx.compose.foundation.shape.CircleShape
                     )
             )

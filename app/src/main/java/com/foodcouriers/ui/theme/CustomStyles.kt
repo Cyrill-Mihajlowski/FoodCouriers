@@ -1,19 +1,42 @@
 package com.foodcouriers.ui.theme
 
-import androidx.compose.material3.Typography
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import com.foodcouriers.R
+
+// TODO: FontWeight соответствует:
+// TODO: Thin - 100, Light - 300, Normal (Regular) - 400, Medium - 500
+// TODO: W600 (SemiBold) - 600 (кастомное значение), Bold - 700, Black - 900
 
 val Poppins = FontFamily(
     Font(R.font.poppins_regular, FontWeight.Normal),
     Font(R.font.poppins_medium, FontWeight.Medium),
     Font(R.font.poppins_bold, FontWeight.Bold),
     Font(R.font.poppins_black, FontWeight.Black)
+)
+
+val Roboto = FontFamily(
+    // Тонкое начертание (Thin)
+    Font(R.font.roboto_thin, FontWeight.Thin),
+    Font(R.font.roboto_thin_italic, FontWeight.Thin, FontStyle.Italic),
+    // Светлое начертание (Light)
+    Font(R.font.roboto_light, FontWeight.Light),
+    // Обычное начертание (Regular)
+    Font(R.font.roboto_regular, FontWeight.Normal),
+    Font(R.font.roboto_italic, FontWeight.Normal, FontStyle.Italic),
+    // Среднее начертание (Medium)
+    Font(R.font.roboto_medium, FontWeight.Medium),
+    // Полужирное (SemiBold - используем кастомный вес)
+    Font(R.font.roboto_semibold, FontWeight.W600),
+    // Жирное (Bold)
+    Font(R.font.roboto_bold, FontWeight.Bold),
+    // Черное (Black)
+    Font(R.font.roboto_black, FontWeight.Black),
 )
 
 object AppTypography {
@@ -79,5 +102,53 @@ object CustomStyles {
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
         color = Color(0xB36E6E6E),
+    )
+    val OnboardTitle = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp,
+        color = Color(0xFF000000),
+    )
+    val OnboardText = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Thin,
+        fontSize = 12.sp,
+        color = Color(0xFF3B3B3B),
+    )
+    val OnboardButton = TextStyle(
+        fontFamily = Roboto,
+        fontWeight = FontWeight.Black,
+        fontSize = 16.sp,
+        color = Color(0xFFFFFFFF),
+    )
+    val OnboardButtonSkip = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+        color = Color(0xFF000000),
+    )
+    val OnboardLogin = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        color = Color(0xFF3B3B3B),
+    )
+    val OnboardItems = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        color = Color(0xFF000000),
+    )
+    val OnboardItemsElem = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        color = Color(0xFF3B3B3B),
+    )
+    val OnboardSighuporLoginwith = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        color = Color(0xFF000000),
     )
 }
