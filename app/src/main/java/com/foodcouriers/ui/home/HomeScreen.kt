@@ -37,10 +37,9 @@ fun HomeScreen(navController: NavHostController) {
     var selectedCategoryIndex = remember { mutableIntStateOf(0) }
 
     Scaffold(
-        topBar = { HomeTopBar() },
+        topBar = { HomeTopBar(navController = navController) },
         bottomBar = {
             BottomNavigationBar(navController = navController)
-
         }) { padding ->
         Box(
             modifier = Modifier.fillMaxSize()
@@ -72,8 +71,8 @@ fun HomeScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(4.dp))
                     HomeFilters(
                         categories = categories,
-                        selectedCategoryIndex = selectedCategoryIndex.value,
-                        onCategorySelected = { selectedCategoryIndex.value = it })
+                        selectedCategoryIndex = selectedCategoryIndex.intValue,
+                        onCategorySelected = { selectedCategoryIndex.intValue = it })
                     HomeFiltersCard(featuredProducts)
                     Spacer(modifier = Modifier.height(4.dp))
                     HomeMenuList(mealMenuCards)

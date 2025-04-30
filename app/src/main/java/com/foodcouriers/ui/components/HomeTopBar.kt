@@ -13,16 +13,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.foodcouriers.R
+import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
 
 @Composable
-fun HomeTopBar(modifier: Modifier = Modifier) {
+fun HomeTopBar(navController: NavHostController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 36.dp)
             .padding(top = 48.dp)
@@ -59,7 +61,7 @@ fun HomeTopBar(modifier: Modifier = Modifier) {
                 .size(32.dp)
                 .clip(CircleShape)
                 .background(AppColors.White)
-                .clickable { /* TODO: обработка нажатия */ }
+                .clickable { navController.navigate(Screen.Profile.route) }
         )
     }
 }

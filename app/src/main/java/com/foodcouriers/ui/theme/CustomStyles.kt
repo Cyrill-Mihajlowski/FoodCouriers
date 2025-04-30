@@ -64,7 +64,8 @@ object CustomStyles {
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
-        color = AppColors.Dark_2
+        color = AppColors.Dark_2,
+        lineHeight = 8.sp,
     )
     val topAppBar = TextStyle(
         fontFamily = Poppins,
@@ -111,9 +112,9 @@ object CustomStyles {
     )
     val OnboardText = TextStyle(
         fontFamily = Poppins,
-        fontWeight = FontWeight.Thin,
-        fontSize = 12.sp,
-        color = Color(0xFF3B3B3B),
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        color = Color(0xFF595959),
     )
     val OnboardButton = TextStyle(
         fontFamily = Roboto,
@@ -133,22 +134,34 @@ object CustomStyles {
         fontSize = 16.sp,
         color = Color(0xFF3B3B3B),
     )
-    val OnboardItems = TextStyle(
+    val OnboardInput = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         color = Color(0xFF000000),
     )
-    val OnboardItemsElem = TextStyle(
+    val OnboardInputItems = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         color = Color(0xFF3B3B3B),
+    )
+    val OboardButtonRed = TextStyle(
+        fontFamily = Roboto,
+        fontWeight = FontWeight.Black,
+        fontSize = 14.sp,
+        color = Color(0xFFFFFFFF),
     )
     val OnboardSighuporLoginwith = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
         color = Color(0xFF000000),
+    )
+    val OnboardTab = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        color = Color(0xFFD61355),
     )
 }

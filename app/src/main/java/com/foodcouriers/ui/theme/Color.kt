@@ -23,4 +23,16 @@ object AppColors {
             Color(0xFFFFDFDF)  // Цвет в конце градиента (#FFDFDF)
         )
     )
+    val gradientBrush_2 = Brush.horizontalGradient(
+        colors = listOf(
+            Color(0xFFD61355),
+            Color(0xFFFF0000)
+        )
+    )
+    val dragHandlegradient = Brush.horizontalGradient(
+        colors = listOf(
+            Color(0xFFFFF0F0),
+            Color(0xFFFFDFDF)
+        )
+    )
 }
