@@ -88,46 +88,4 @@ fun HomeSearchBar() {
             }
         }
     )
-
-//    TextField(
-//        value = searchQuery.value,
-//        onValueChange = { newValue -> searchQuery.value = newValue },
-//        placeholder = {
-//            Text(
-//                text = stringResource(R.string.SearchBarTitle),
-//                style = CustomStyles.searchField,
-//            )
-//        },
-//
-//        leadingIcon = {
-//            Icon(
-//                painter = painterResource(R.drawable.ic_search),
-//                contentDescription = "Search Icon",
-//                tint = AppColors.Dark,
-//                modifier = Modifier.padding(start = 8.dp)
-//            )
-//        },
-//
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .heightIn(max = 36.dp)
-////            .wrapContentHeight(Alignment.Top)
-//            .padding(horizontal = Dimens.ExtraLargePadding)
-//        .background(
-//                brush = gradientBrush,
-//                shape = RoundedCornerShape(8.dp)
-//            ),
-//        shape = RoundedCornerShape(8.dp),
-//        colors = TextFieldDefaults.colors(
-//            unfocusedContainerColor = AppColors.Transparent,
-//            unfocusedIndicatorColor = AppColors.Transparent,
-//            focusedIndicatorColor = AppColors.Transparent,
-//            focusedTextColor = AppColors.Dark
-//        ),
-//        textStyle = LocalTextStyle.current.copy(
-//            fontSize = 12.sp,
-//            lineHeight = 14.sp
-//        ),
-//        singleLine = true,
-//    )
 }

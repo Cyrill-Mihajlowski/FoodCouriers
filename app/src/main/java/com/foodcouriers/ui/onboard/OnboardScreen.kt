@@ -50,7 +50,6 @@ import kotlinx.coroutines.launch
 fun OnboardScreen(navController: NavController) {
     val slideNumber: Int = 3
 
-//    val onboardingState = remember { mutableIntStateOf(0) }
     val pagerState = rememberPagerState { slideNumber }
     val modalBottomSheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true
@@ -179,14 +178,20 @@ fun OnboardScreen(navController: NavController) {
                         0 -> CreateAccountContent {
                             coroutineScope.launch {
                                 modalBottomSheetState.hide()
-                                navController.navigate(Screen.Home.route)
+                                navController.navigate(Screen.Home.route) {
+                                    popUpTo(Screen.Onboard.route) { inclusive = true }
+                                } // TODO:
+//                                navController.navigate(Screen.Home.route)
                             }
                         }
 
                         1 -> LoginContent {
                             coroutineScope.launch {
                                 modalBottomSheetState.hide()
-                                navController.navigate(Screen.Home.route)
+                                navController.navigate(Screen.Home.route) {
+                                    popUpTo(Screen.Onboard.route) { inclusive = true }
+                                } // TODO:
+//                                navController.navigate(Screen.Home.route)
                             }
                         }
                     }

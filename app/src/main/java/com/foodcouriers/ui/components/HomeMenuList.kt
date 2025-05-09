@@ -16,14 +16,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.foodcouriers.R
 import com.foodcouriers.domain.models.MealItems
+import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
 import com.foodcouriers.ui.theme.Dimens
 
 @Composable
-fun HomeMenuList(products: List<MealItems>) {
+fun HomeMenuList(products: List<MealItems>, navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -46,7 +48,9 @@ fun HomeMenuList(products: List<MealItems>) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End,
-                modifier = Modifier.clickable(onClick = { })
+                modifier = Modifier.clickable(onClick = {
+                    navController.navigate(Screen.Home.MealMenuExpanded.route)
+                })
             ) {
                 Text(
                     text = "See All",

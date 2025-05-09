@@ -19,22 +19,28 @@ object HomeMockData {
     fun featuredProducts(): List<ProductItems> {
         return listOf(
             ProductItems(
+                id = "1",
                 imageResId = R.drawable.burger_1,
                 name = "Chicken Burger",
                 price = "$20.00",
-                rating = "4.5"
+                rating = "4.5",
+                description = "100 gr chicken + tomato + cheese  Lettuce"
             ),
             ProductItems(
+                id = "2",
                 imageResId = R.drawable.burger_2,
                 name = "Cheese Burger",
                 price = "$18.00",
-                rating = "4.8"
+                rating = "4.8",
+                description = "100 gr chicken + tomato + cheese  Lettuce"
             ),
             ProductItems(
+                id = "3",
                 imageResId = R.drawable.burger_1,
                 name = "Chicken Burger",
                 price = "$ 35.00",
-                rating = "4.8"
+                rating = "4.8",
+                description = "100 gr chicken + tomato + cheese  Lettuce"
             ),
         )
     }

@@ -39,7 +39,7 @@ fun HomeTopBar(navController: NavHostController) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .clickable { /* TODO: обработка нажатия */ }
+                .clickable { navController.navigate(Screen.Location.route) }
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_location),

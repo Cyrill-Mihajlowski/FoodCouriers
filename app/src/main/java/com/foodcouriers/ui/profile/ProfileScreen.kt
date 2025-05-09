@@ -3,17 +3,25 @@ package com.foodcouriers.ui.profile
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -27,22 +35,40 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
+import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.components.BottomNavigationBar
+import com.foodcouriers.ui.components.TextFieldCustom
+import com.foodcouriers.ui.components.TopCustomButton
+import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 import com.foodcouriers.ui.theme.CustomStyles
+import com.foodcouriers.ui.theme.Dimens
+import kotlin.collections.component1
+import kotlin.collections.component2
 
 @Composable
 fun ProfileScreen(navController: NavHostController) {
+    val array_1 = mapOf(
+        stringResource(R.string.profile_your_name) to "Joyce Johnson",
+        stringResource(R.string.profile_occupation) to "Manager",
+        stringResource(R.string.profile_empoyer) to "Food Couriers",
+        stringResource(R.string.profile_country) to "Nigeria",
+    )
+    val array_2 = mapOf(
+        stringResource(R.string.profile_phone_number) to "+234 813 0400 445",
+        stringResource(R.string.profile_email) to "ekamcy@mail.com",
+    )
+
     Scaffold(
-//        bottomBar = { BottomNavigationBar(navController) }
     ) { padding ->
         Box(
             modifier = Modifier
-//                .fillMaxSize()
-                .padding()
-                .background(color = Color.White)
+                .fillMaxSize()
+//                .padding(padding)
+                .background(color = Color(0xFFFDFDFF))
         ) {
             Image(
                 painter = painterResource(R.drawable.pattern_6),
@@ -56,107 +82,165 @@ fun ProfileScreen(navController: NavHostController) {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
+                    .padding(horizontal = 24.dp)
             ) {
                 item {
                     Row(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(top = 10.dp, bottom = 12.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Text("Icon 1")
-                        Text("Icon 2")
+                        TopCustomButton(
+                            icon = R.drawable.ic_red_arrow_left,
+                            click = { navController.popBackStack() }
+                        )
+                        TopCustomButton(
+                            icon = R.drawable.ic_notifiaction,
+                            click = {}
+                        )
                     }
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        Text("Profile")
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Text("Icon")
-                    }
-                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(bottom = 22.dp),
+                        horizontalArrangement = Arrangement.Start
                     ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Start
-                        ) {
-                            Text("Personal info")
-                        }
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth(),
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text("Your name")
-                                Text("Joyce Johnson")
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text("Your name")
-                                Text("Joyce Johnson")
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text("Your name")
-                                Text("Joyce Johnson")
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
-                            ) {
-                                Text("Your name")
-                                Text("Joyce Johnson")
-                            }
-                        }
+                        Text(
+                            text = stringResource(R.string.profile_title_profile),
+                            style = CustomStyles.Profile_title
+                        )
                     }
-                    Column(
+                    Row(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(bottom = 8.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Bottom
+                            .fillMaxWidth()
+                            .padding(bottom = 32.dp),
+                        horizontalArrangement = Arrangement.Center
                     ) {
-                        TextButton(
-                            onClick = { },
+                        Box(
                             modifier = Modifier
+                                .size(100.dp)
                                 .background(
-                                    brush = gradientBrush_2,
-                                    shape = RoundedCornerShape(8.dp),
+                                    color = AppColors.Pink_2,
+                                    shape = CircleShape
                                 ),
-                            shape = RoundedCornerShape(8.dp),
-                            contentPadding = PaddingValues(
-                                start = 60.dp,
-                                end = 60.dp,
-                                top = 18.dp,
-                                bottom = 18.dp
-                            )
+                            contentAlignment = Alignment.Center
                         ) {
-                            Text(
-                                text = "Edit",
-                                style = CustomStyles.OnboardButton
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_avatar),
+                                contentDescription = "Heart",
+                                tint = Color.Unspecified,
+                                modifier = Modifier
+                                    .size(80.dp)
+                                    .clickable(onClick = {})
+                            )
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_tabler_edit),
+                                contentDescription = "Add",
+                                modifier = Modifier
+                                    .size(28.dp)
+                                    .align(Alignment.BottomEnd)
+                                    .offset(x = (-2).dp, y = (-2).dp)
+                                    .clickable(onClick = {}),
+                                tint = Color.Unspecified
                             )
                         }
                     }
+
+                    ProfileItems(
+                        title = stringResource(R.string.profile_personal_info),
+                        array = array_1
+                    )
+                    ProfileItems(
+                        title = stringResource(R.string.profile_contact_info),
+                        array = array_2
+                    )
+                }
+            }
+
+            EditCustomButton()
+        }
+    }
+}
+
+@Composable
+fun EditCustomButton() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 30.dp)
+    ) {
+        TextButton(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(horizontal = 24.dp)
+                .background(
+                    brush = gradientBrush_2,
+                    shape = RoundedCornerShape(8.dp),
+                ),
+            onClick = { },
+            shape = RoundedCornerShape(8.dp),
+            contentPadding = PaddingValues(
+                top = 16.dp,
+                bottom = 16.dp
+            )
+        ) {
+            Text(
+                text = stringResource(R.string.profile_button_edit),
+                style = CustomStyles.OnboardButton
+            )
+        }
+    }
+}
+
+@Composable
+fun ProfileItems(
+    title: String,
+    array: Map<String, String>
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 0.dp, bottom = 24.dp)
+            .background(color = Color(0xFFFDFDFF))
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.Start,
+        ) {
+            Text(
+                text = title,
+                style = CustomStyles.Profile_title_2
+            )
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(
+                    width = 1.dp,
+                    color = AppColors.Gray_3,
+                    shape = RoundedCornerShape(8.dp)
+                )
+                .padding(16.dp),
+        ) {
+            array.forEach { (textTitle, textValue) ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = textTitle,
+                        style = CustomStyles.Profile_title_3
+                    )
+                    Text(
+                        text = textValue,
+                        style = CustomStyles.Profile_title_item
+                    )
                 }
             }
         }

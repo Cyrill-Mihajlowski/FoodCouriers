@@ -33,4 +33,49 @@
     <string name="nav_profile">Profile</string>
     <string name="nav_order">Order</string>
     <string name="nav_chat">Chat</string>
+
+    <!-- TODO: Profile screnn -->
+    <string name="profile_title_profile">Profile</string>
+    <string name="profile_contact_info">Contact Info</string>
+    <string name="profile_personal_info">Personal Info</string>
+    <string name="profile_button_edit">Edit</string>
+    <string name="profile_your_name">Your name</string>
+    <string name="profile_occupation">Occupation</string>
+    <string name="profile_empoyer">Employer</string>
+    <string name="profile_country">Country</string>
+    <string name="profile_phone_number">Phone number</string>
+    <string name="profile_email">Email</string>
+
+    <!-- TODO: Order screnn -->
+    <string name="order_title_order_detail">Order details</string>
+    <string name="order_card_title_1">Sub-Total</string>
+    <string name="order_card_title_2">Delivery Charge</string>
+    <string name="order_card_title_3">Discount</string>
+    <string name="order_card_title_4">Total</string>
+    <string name="order_bottom_button">Place My Order</string>
+
+    <!-- TODO: FinishOrder screnn -->
+    <string name="finish_order_input">Leave feedback</string>
+    <string name="finish_order_button_submit">Submit</string>
+    <string name="finish_order_button_skip">Skip</string>
+
+    <!-- TODO: Chat screnn -->
+    <string name="chat_title">Chat</string>
+    <string name="chat_search_bar_title">Food Runs typing.....</string>
+
+    <!-- TODO: LocationScreen screnn -->
+    <string name="location_input_title">Where is your location</string>
+    <string name="location_bottom_button">Set Location</string>
+    <string name="location_card_title">Your Location</string>
+    <string name="location_card_text">109, Freedom Way, Off Lekki Phase Victoria Island, Lagos.</string>
+
+    <!-- TODO: MealMenuExpandedScreen screnn -->
+    <string name="meal_menu_title">Meal Menu</string>
+    <string name="meal_menu_input_title">Meal Menu</string>
+
+    <!-- TODO: DetailMenuScreen screnn -->
+    <string name="detail_bottom_button">Add To Chart</string>
+
+
+
 </resources>

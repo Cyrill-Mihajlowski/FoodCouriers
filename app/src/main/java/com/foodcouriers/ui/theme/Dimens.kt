@@ -16,5 +16,4 @@ object Dimens {
     val Large2Padding = round(25 / density).toInt().dp
     val Large3Padding = round(28 / density).toInt().dp
     val ExtraLargePadding = round(32 / density).toInt().dp
-
 }

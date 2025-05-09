@@ -164,4 +164,46 @@ object CustomStyles {
         fontSize = 16.sp,
         color = Color(0xFFD61355),
     )
+
+    val Profile_title = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp,
+        color = Color(0xFF000000),
+    )
+
+    val Profile_title_2 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        color = Color(0xFF000000),
+    )
+
+    val Profile_title_3 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        color = Color(0xFF3B3B3B),
+    )
+
+    val Profile_title_item = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        color = Color(0xFF000000),
+    )
+
+    val Order_title = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp,
+        color = Color(0xFF000000),
+    )
+
+    val Chat_title = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp,
+        color = Color(0xFF000000),
+    )
 }

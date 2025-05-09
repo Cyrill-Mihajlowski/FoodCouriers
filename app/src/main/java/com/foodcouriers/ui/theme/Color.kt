@@ -29,6 +29,27 @@ object AppColors {
             Color(0xFFFF0000)
         )
     )
+    val gradientBrush_3 = Brush.horizontalGradient(
+        colors = listOf(
+            Color(0x1AD61355),
+            Color(0x1AFF0000)
+        )
+    )
+
+    val gradientBrush_4 = Brush.horizontalGradient(
+        colors = listOf(
+            Color(0x1AF6F6F6),
+            Color(0xFFF6F6F6)
+        )
+    )
+
+    val gradientBrush_5 = Brush.horizontalGradient(
+        colors = listOf(
+            Color(0xFF000000),
+            Color(0xFF000000)
+        )
+    )
+
     val dragHandlegradient = Brush.horizontalGradient(
         colors = listOf(
             Color(0xFFFFF0F0),

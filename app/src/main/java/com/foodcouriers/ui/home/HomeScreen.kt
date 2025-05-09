@@ -73,9 +73,9 @@ fun HomeScreen(navController: NavHostController) {
                         categories = categories,
                         selectedCategoryIndex = selectedCategoryIndex.intValue,
                         onCategorySelected = { selectedCategoryIndex.intValue = it })
-                    HomeFiltersCard(featuredProducts)
+                    HomeFiltersCard(products = featuredProducts, navController = navController)
                     Spacer(modifier = Modifier.height(4.dp))
-                    HomeMenuList(mealMenuCards)
+                    HomeMenuList(products = mealMenuCards, navController = navController)
                 }
             }
         }

@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -27,26 +28,31 @@ import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavGraph.Companion.findStartDestination
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     val nav_items = listOf(
         NavigationItem(
-            Screen.Home.route,
+            listOf(Screen.Home.route, Screen.Home.MealMenuExpanded.route),
             stringResource(R.string.nav_home),
             R.drawable.ic_nav_home
         ),
         NavigationItem(
-            Screen.Profile.route,
+            listOf(Screen.Profile.route),
             stringResource(R.string.nav_profile),
             R.drawable.ic_nav_proffile
         ),
         NavigationItem(
-            Screen.Order.route,
+            listOf(Screen.Order.route),
             stringResource(R.string.nav_order),
             R.drawable.ic_nav_buy
         ),
-        NavigationItem(Screen.Chat.route, stringResource(R.string.nav_chat), R.drawable.ic_nav_chat)
+        NavigationItem(
+            listOf(Screen.Chat.route),
+            stringResource(R.string.nav_chat),
+            R.drawable.ic_nav_chat
+        )
     )
 
     val currentBackStackEntry = navController.currentBackStackEntryAsState()
@@ -61,6 +67,12 @@ fun BottomNavigationBar(navController: NavHostController) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .shadow(
+                    elevation = 8.dp,
+                    shape = RoundedCornerShape(24.dp),
+                    ambientColor = Color.Black.copy(alpha = 0.1f),
+                    spotColor = Color.Black.copy(alpha = 0.1f)
+                )
                 .background(
                     color = AppColors.White,
                     shape = RoundedCornerShape(24.dp)
@@ -70,12 +82,17 @@ fun BottomNavigationBar(navController: NavHostController) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             nav_items.forEach { item ->
-                val isSelected = currentRoute == item.route
+//                val isSelected = currentRoute == item.route
+                val isSelected = item.route.any { route ->
+                    currentRoute?.startsWith(route) == true
+                }
                 Row(
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(item.route) {
-                                popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            navController.navigate(item.route.first()) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
                                 launchSingleTop = true
                                 restoreState = true
                             }
@@ -90,7 +107,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                     ) {
                     Box(
                         modifier = Modifier.background(
-                            color = if (currentRoute == item.route) AppColors.Pink_2 else AppColors.Transparent,
+                            color = if (isSelected) AppColors.Pink_2 else AppColors.Transparent,
                             shape = RoundedCornerShape(16.dp)
                         )
                     ) {
@@ -99,9 +116,9 @@ fun BottomNavigationBar(navController: NavHostController) {
                     Icon(
                         painter = painterResource(id = item.icon),
                         contentDescription = null,
-                        tint = if (currentRoute == item.route) MaterialTheme.colorScheme.primary else Color.Unspecified,
+                        tint = if (isSelected) MaterialTheme.colorScheme.primary else Color.Unspecified,
                     )
-                    if (currentRoute == item.route) {
+                    if (isSelected) {
                         Spacer(modifier = Modifier.width(16.dp))
                         Text(
                             text = item.label,

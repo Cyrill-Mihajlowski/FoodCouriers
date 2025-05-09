@@ -1,5 +1,6 @@
 package com.foodcouriers.ui.components
 
+import android.R.attr.onClick
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,15 +28,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.foodcouriers.R
 import com.foodcouriers.domain.models.ProductItems
+import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.CustomStyles
 import com.foodcouriers.ui.theme.Dimens
 
 @Composable
 fun HomeFiltersCard(
-    products: List<ProductItems>
+    products: List<ProductItems>,
+    navController: NavHostController
 ) {
     LazyRow(
         modifier = Modifier
@@ -44,12 +48,13 @@ fun HomeFiltersCard(
     ) {
         items(products) { product ->
             ProductCard(
-                imageResId = product.imageResId,
-                name = product.name,
-                rating = product.rating,
-                price = product.price,
-                description = "100 gr chicken + tomato + cheese  Lettuce",
-                onAddToCart = { /* TODO: добавить логику добавления в корзину */ }
+                product = product,
+                onAddToCart = { },
+                navController = navController
+//                onItemClick = { productId ->
+////                    navController.navigate(Screen.Home.DetailMenu.createRoute(productId))
+//                    navController.navigate(Screen.Home.DetailMenu.route)
+//                }
             )
         }
     }
@@ -57,17 +62,16 @@ fun HomeFiltersCard(
 
 @Composable
 fun ProductCard(
-    imageResId: Int,
-    rating: String,
-    name: String,
-    description: String,
-    price: String,
-    onAddToCart: () -> Unit
+    product: ProductItems,
+    onAddToCart: () -> Unit,
+    navController: NavHostController,
+//    onItemClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .width(200.dp)
-            .padding(top = 4.dp, end = Dimens.LargePadding, start = 4.dp),
+            .padding(top = 4.dp, end = Dimens.LargePadding, start = 4.dp)
+            .clickable { navController.navigate(Screen.Home.DetailMenu.route) },
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(6.dp),
     ) {
@@ -75,7 +79,7 @@ fun ProductCard(
             modifier = Modifier
                 .background(AppColors.White)
                 .padding(start = 6.dp, end = 6.dp, bottom = 10.dp)
-                .clickable(onClick = { })
+                .clickable(onClick = { navController.navigate(Screen.Home.DetailMenu.route) })
         ) {
             Row(
                 modifier = Modifier
@@ -90,15 +94,15 @@ fun ProductCard(
                     modifier = Modifier
                 )
                 Text(
-                    text = rating,
+                    text = product.rating,
                     modifier = Modifier.padding(start = 4.dp),
                     style = CustomStyles.cardRating
                 )
             }
             Spacer(modifier = Modifier.height(12.dp))
             Image(
-                painter = painterResource(id = imageResId),
-                contentDescription = name,
+                painter = painterResource(id = product.imageResId),
+                contentDescription = product.description,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -110,14 +114,14 @@ fun ProductCard(
                     .padding(horizontal = 8.dp)
             ) {
                 Text(
-                    text = name,
+                    text = product.name,
                     style = CustomStyles.cardTitle,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = description,
+                    text = product.description,
                     style = CustomStyles.cardText,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                     maxLines = 2,
@@ -133,7 +137,7 @@ fun ProductCard(
                         .clickable(onClick = { })
                 ) {
                     Text(
-                        text = price,
+                        text = product.price,
                         style = CustomStyles.cardPrice,
                         color = MaterialTheme.colorScheme.primary,
                     )
