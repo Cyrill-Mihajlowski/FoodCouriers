@@ -1,23 +1,20 @@
 package com.foodcouriers.ui.chat
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -26,7 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -35,8 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
+import com.foodcouriers.ui.components.AppLayout
+import com.foodcouriers.ui.components.TopBar
 import com.foodcouriers.ui.components.TopCustomButton
-import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_4
 import com.foodcouriers.ui.theme.CustomStyles
@@ -56,89 +53,48 @@ fun ChatScreen(navController: NavHostController) {
         ChatMessage("Bot typing....", true, isTyping = true)
     )
 
-    Scaffold(
-    ) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-//                .padding(padding)
-                .background(color = Color(0xFFFDFDFF))
-        ) {
-            Image(
-                painter = painterResource(R.drawable.pattern_6),
-                contentDescription = "Background",
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier
-                    .fillMaxWidth()
-//                    .padding(horizontal = 16.dp)
-            )
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp)
-                        .padding(top = 10.dp, bottom = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    TopCustomButton(
-                        icon = R.drawable.ic_red_arrow_left,
-                        click = { navController.popBackStack() }
-                    )
-                    TopCustomButton(
-                        icon = R.drawable.ic_notifiaction,
-                        click = {}
-                    )
-                }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp)
-                        .padding(bottom = 30.dp),
-                    horizontalArrangement = Arrangement.Start
-                ) {
-                    Text(
-                        text = stringResource(R.string.chat_title),
-                        style = CustomStyles.Chat_title
-                    )
-                }
+    val topBarIcons = mapOf<Int, () -> Unit>(
+        R.drawable.ic_red_arrow_left to { navController.popBackStack() },
+        R.drawable.ic_notifiaction to { },
+    )
 
-                LazyColumn(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 24.dp)
-                        .padding(bottom = 20.dp)
-                ) {
-                    item {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_chat_avatar),
-                            contentDescription = null,
-                            tint = Color.Unspecified
+    AppLayout(
+        topBar = { TopBar(topBarIcons) },
+        contentPadding = PaddingValues(horizontal = 24.dp),
+    ) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            Text(
+                modifier = Modifier.padding(top = 8.dp, start = 4.dp, bottom = 32.dp),
+                text = stringResource(R.string.chat_title),
+                style = CustomStyles.Chat_title,
+            )
+            LazyColumn(
+                modifier = Modifier.weight(1f)
+            ) {
+                item {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_chat_avatar),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+                    messages.forEach { chatItem ->
+                        ChatBubble(
+                            message = chatItem,
+                            modifier = Modifier
+                                .padding(vertical = 8.dp)
+                                .fillMaxWidth()
                         )
-                        messages.forEach { chatItem ->
-                            ChatBubble(
-                                message = chatItem,
-                                modifier = Modifier
-                                    .padding(vertical = 8.dp)
-                                    .fillMaxWidth()
-                            )
-                        }
                     }
                 }
-                InputField(navController = navController)
             }
+            InputField(navController = navController)
         }
     }
 }
 
 @Composable
 fun ChatBubble(message: ChatMessage, modifier: Modifier = Modifier) {
-    // Кастомная форма для разных типов сообщений
     val bubbleShape = if (message.isBot) {
-        // Для бота: правый верхний угол без закругления
         RoundedCornerShape(
             topStart = 0.dp,
             topEnd = 16.dp,
@@ -146,7 +102,6 @@ fun ChatBubble(message: ChatMessage, modifier: Modifier = Modifier) {
             bottomEnd = 16.dp
         )
     } else {
-        // Для пользователя: левый верхний угол без закругления
         RoundedCornerShape(
             topStart = 16.dp,
             topEnd = 0.dp,
@@ -202,7 +157,7 @@ fun InputField(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp)
+//            .padding(horizontal = 24.dp)
             .padding(bottom = 32.dp)
     ) {
         Row(

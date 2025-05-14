@@ -1,7 +1,5 @@
 package com.foodcouriers.ui.profile
 
-import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -10,44 +8,30 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
-import com.foodcouriers.domain.models.Screen
-import com.foodcouriers.ui.components.BottomNavigationBar
-import com.foodcouriers.ui.components.TextFieldCustom
-import com.foodcouriers.ui.components.TopCustomButton
+import com.foodcouriers.ui.components.AppLayout
+import com.foodcouriers.ui.components.BottomCustomButton
+import com.foodcouriers.ui.components.TopBar
 import com.foodcouriers.ui.theme.AppColors
-import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 import com.foodcouriers.ui.theme.CustomStyles
-import com.foodcouriers.ui.theme.Dimens
-import kotlin.collections.component1
-import kotlin.collections.component2
 
 @Composable
 fun ProfileScreen(navController: NavHostController) {
@@ -61,136 +45,76 @@ fun ProfileScreen(navController: NavHostController) {
         stringResource(R.string.profile_phone_number) to "+234 813 0400 445",
         stringResource(R.string.profile_email) to "ekamcy@mail.com",
     )
+    val topBarIcons = mapOf<Int, () -> Unit>(
+        R.drawable.ic_red_arrow_left to { navController.popBackStack() },
+        R.drawable.ic_notifiaction to { },
+    )
 
-    Scaffold(
-    ) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-//                .padding(padding)
-                .background(color = Color(0xFFFDFDFF))
+    AppLayout(
+        topBar = { TopBar(topBarIcons) },
+        contentPadding = PaddingValues(horizontal = 24.dp),
+    ) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize()
         ) {
-            Image(
-                painter = painterResource(R.drawable.pattern_6),
-                contentDescription = "Background",
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier
-                    .fillMaxWidth()
-//                    .padding(horizontal = 16.dp)
-            )
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .padding(horizontal = 24.dp)
-            ) {
-                item {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 10.dp, bottom = 12.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        TopCustomButton(
-                            icon = R.drawable.ic_red_arrow_left,
-                            click = { navController.popBackStack() }
-                        )
-                        TopCustomButton(
-                            icon = R.drawable.ic_notifiaction,
-                            click = {}
-                        )
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 22.dp),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        Text(
-                            text = stringResource(R.string.profile_title_profile),
-                            style = CustomStyles.Profile_title
-                        )
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 32.dp),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(100.dp)
-                                .background(
-                                    color = AppColors.Pink_2,
-                                    shape = CircleShape
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_avatar),
-                                contentDescription = "Heart",
-                                tint = Color.Unspecified,
-                                modifier = Modifier
-                                    .size(80.dp)
-                                    .clickable(onClick = {})
-                            )
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_tabler_edit),
-                                contentDescription = "Add",
-                                modifier = Modifier
-                                    .size(28.dp)
-                                    .align(Alignment.BottomEnd)
-                                    .offset(x = (-2).dp, y = (-2).dp)
-                                    .clickable(onClick = {}),
-                                tint = Color.Unspecified
-                            )
-                        }
-                    }
-
-                    ProfileItems(
-                        title = stringResource(R.string.profile_personal_info),
-                        array = array_1
-                    )
-                    ProfileItems(
-                        title = stringResource(R.string.profile_contact_info),
-                        array = array_2
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 22.dp),
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    Text(
+                        text = stringResource(R.string.profile_title_profile),
+                        style = CustomStyles.Profile_title
                     )
                 }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 32.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(100.dp)
+                            .background(
+                                color = AppColors.Pink_2,
+                                shape = CircleShape
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_avatar),
+                            contentDescription = "Heart",
+                            tint = Color.Unspecified,
+                            modifier = Modifier
+                                .size(80.dp)
+                                .clickable(onClick = {})
+                        )
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_tabler_edit),
+                            contentDescription = "Add",
+                            modifier = Modifier
+                                .size(28.dp)
+                                .align(Alignment.BottomEnd)
+                                .offset(x = (-2).dp, y = (-2).dp)
+                                .clickable(onClick = {}),
+                            tint = Color.Unspecified
+                        )
+                    }
+                }
+                ProfileItems(
+                    title = stringResource(R.string.profile_personal_info),
+                    array = array_1
+                )
+                ProfileItems(
+                    title = stringResource(R.string.profile_contact_info),
+                    array = array_2
+                )
             }
-
-            EditCustomButton()
         }
-    }
-}
-
-@Composable
-fun EditCustomButton() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = 30.dp)
-    ) {
-        TextButton(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomCenter)
-                .padding(horizontal = 24.dp)
-                .background(
-                    brush = gradientBrush_2,
-                    shape = RoundedCornerShape(8.dp),
-                ),
-            onClick = { },
-            shape = RoundedCornerShape(8.dp),
-            contentPadding = PaddingValues(
-                top = 16.dp,
-                bottom = 16.dp
-            )
-        ) {
-            Text(
-                text = stringResource(R.string.profile_button_edit),
-                style = CustomStyles.OnboardButton
-            )
-        }
+        BottomCustomButton()
     }
 }
 

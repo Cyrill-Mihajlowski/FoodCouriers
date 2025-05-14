@@ -67,4 +67,10 @@ object HomeMockData {
             ),
         )
     }
+
+    val imageList: List<Int> = listOf(
+        R.drawable.pc_carusel,
+        R.drawable.pc_carusel,
+        R.drawable.pc_carusel,
+    )
 }

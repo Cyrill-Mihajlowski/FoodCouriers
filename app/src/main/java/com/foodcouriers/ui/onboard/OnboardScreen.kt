@@ -1,12 +1,5 @@
 package com.foodcouriers.ui.onboard
 
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.HorizontalPager
@@ -21,20 +15,25 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.foodcouriers.R
 import com.foodcouriers.domain.models.Screen
@@ -119,7 +118,7 @@ fun OnboardScreen(navController: NavController) {
             ModalBottomSheet(
                 onDismissRequest = { coroutineScope.launch { modalBottomSheetState.hide() } },
                 sheetState = modalBottomSheetState,
-                scrimColor = Color.Transparent, // TODO: Убираем затемнение
+                scrimColor = Color.Transparent,
                 containerColor = Color.White,
                 dragHandle = {
                     Box(
@@ -144,32 +143,31 @@ fun OnboardScreen(navController: NavController) {
                             Box(
                                 modifier = Modifier
                                     .tabIndicatorOffset(tabPositions[selectedTab])
-                                    .wrapContentSize(Alignment.BottomCenter) // Ограничиваем размер
-                                    .width(77.dp) // Ширина индикатора
-                                    .height(2.dp) // Высота индикатора
+                                    .wrapContentSize(Alignment.BottomCenter)
+                                    .width(77.dp)
+                                    .height(2.dp)
                                     .background(
                                         color = AppColors.Pink,
                                         shape = RoundedCornerShape(4.dp)
                                     )
-                                    .align(Alignment.CenterHorizontally) // Явное выравнивание
-//                                    .padding(horizontal = 16.dp) // Отступы от краев таба
+                                    .align(Alignment.CenterHorizontally)
                             )
                         },
-                        divider = { /* Убираем разделитель */ }
+                        divider = { }
                     ) {
                         tabs.forEachIndexed { index, text ->
                             Tab(
                                 selected = selectedTab == index,
                                 onClick = { selectedTab = index },
                                 modifier = Modifier
-                                    .height(40.dp), // Высота отдельного таба
+                                    .height(40.dp),
                                 text = {
                                     Text(
                                         text = text,
                                         style = CustomStyles.OnboardTab
                                     )
                                 },
-                                selectedContentColor = Color.Transparent, // Убираем дефолтную подсветку
+                                selectedContentColor = Color.Transparent,
                                 unselectedContentColor = Color.Transparent
                             )
                         }
@@ -181,7 +179,6 @@ fun OnboardScreen(navController: NavController) {
                                 navController.navigate(Screen.Home.route) {
                                     popUpTo(Screen.Onboard.route) { inclusive = true }
                                 } // TODO:
-//                                navController.navigate(Screen.Home.route)
                             }
                         }
 
@@ -191,7 +188,6 @@ fun OnboardScreen(navController: NavController) {
                                 navController.navigate(Screen.Home.route) {
                                     popUpTo(Screen.Onboard.route) { inclusive = true }
                                 } // TODO:
-//                                navController.navigate(Screen.Home.route)
                             }
                         }
                     }

@@ -1,11 +1,9 @@
 package com.foodcouriers.ui.navigator
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.chat.ChatScreen
 import com.foodcouriers.ui.detail_menu.DetailMenuScreen
@@ -22,16 +20,13 @@ import com.foodcouriers.ui.start.StartScreen
 fun AppNavigator() {
     val navController = rememberNavController()
 
-//    val currentBackStackEntry = navController.currentBackStackEntryAsState()
-//    val currentRoute = currentBackStackEntry.value?.destination?.route
-
     NavHost(
         navController = navController,
         startDestination = Screen.Start.route,
     ) {
         composable(Screen.Start.route) {
             StartScreen(
-                timeDelay = 2000, // TODO: 1000 = 1 секунда.
+                timeDelay = 2000,
                 onNavigateToOnboard = {
                     navController.navigate(Screen.Onboard.route) {
                         popUpTo(Screen.Start.route) { inclusive = true }
@@ -50,14 +45,6 @@ fun AppNavigator() {
         composable(Screen.Home.DetailMenu.route) {
             DetailMenuScreen(navController = navController)
         }
-        // В AppNavigator
-//        composable(
-//            route = Screen.Home.DetailMenu.route,
-//            arguments = listOf(navArgument("productId") { type = NavType.StringType })
-//        ) { backStackEntry ->
-//            val productId = backStackEntry.arguments?.getString("productId") ?: ""
-//            DetailMenuScreen(productId = productId)
-//        }
         composable(Screen.Home.MealMenuExpanded.route) {
             MealMenuExpandedScreen(navController = navController)
         }
@@ -73,7 +60,6 @@ fun AppNavigator() {
         composable(Screen.FinishOrder.route) {
             FinishOrder(navController = navController)
         }
-
         composable(Screen.Location.route) {
             LocationScreen(navController = navController)
         }

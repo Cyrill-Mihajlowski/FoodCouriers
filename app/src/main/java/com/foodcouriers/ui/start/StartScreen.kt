@@ -31,7 +31,6 @@ fun StartScreen(
         delay(timeDelay)
         onNavigateToOnboard()
     }
-
     Box(
         modifier = Modifier
             .fillMaxSize()

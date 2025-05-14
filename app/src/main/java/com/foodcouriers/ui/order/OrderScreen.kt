@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -21,9 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -44,8 +41,8 @@ import androidx.navigation.NavHostController
 import com.foodcouriers.R
 import com.foodcouriers.domain.models.OrderCardItems
 import com.foodcouriers.domain.models.Screen
-import com.foodcouriers.ui.components.MealCard
-import com.foodcouriers.ui.components.TopCustomButton
+import com.foodcouriers.ui.components.AppLayout
+import com.foodcouriers.ui.components.TopBar
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_3
@@ -82,94 +79,82 @@ fun OrderScreen(navController: NavHostController) {
         stringResource(R.string.order_card_title_4) to "110",
     )
 
-    Scaffold { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-//                .padding(padding)
-                .background(color = Color(0xFFFDFDFF))
+    val topBarIcons = mapOf<Int, () -> Unit>(
+        R.drawable.ic_red_arrow_left to { navController.popBackStack() },
+    )
+
+    AppLayout(
+        topBar = { TopBar(topBarIcons) },
+        contentPadding = PaddingValues(horizontal = 24.dp),
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
         ) {
-            Image(
-                painter = painterResource(R.drawable.pattern_6),
-                contentDescription = "Background",
-                contentScale = ContentScale.FillWidth,
+            LazyColumn(
                 modifier = Modifier
-                    .fillMaxWidth()
-//                    .padding(horizontal = 16.dp)
-            )
-            Column(modifier = Modifier.fillMaxSize()) {
-                LazyColumn(
-                    modifier = Modifier
-//                        .fillMaxSize()
-                        .weight(1f)
-                        .padding(horizontal = 24.dp)
-                        .padding(top = 32.dp)
-                ) {
-                    item {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 10.dp, bottom = 12.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            TopCustomButton(
-                                icon = R.drawable.ic_red_arrow_left,
-                                click = { navController.popBackStack() }
+                    .fillMaxSize()
+                    .weight(1f)
+            ) {
+                item {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 22.dp),
+                        horizontalArrangement = Arrangement.Start
+                    ) {
+                        Text(
+                            text = stringResource(R.string.order_title_order_detail),
+                            style = CustomStyles.Order_title
+                        )
+                    }
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        array.forEach { item ->
+                            OrderCustomCard(
+                                imageResId = item.imageResId,
+                                title = item.title,
+                                text = item.text,
+                                price = item.price,
                             )
-                        }
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(bottom = 22.dp),
-                            horizontalArrangement = Arrangement.Start
-                        ) {
-                            Text(
-                                text = stringResource(R.string.order_title_order_detail),
-                                style = CustomStyles.Order_title
-                            )
-                        }
-                        Column(
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            array.forEach { item ->
-                                OrderCustomCard(
-                                    imageResId = item.imageResId,
-                                    title = item.title,
-                                    text = item.text,
-                                    price = item.price,
-//                                onClick = { /* TODO: обработать клик по карточке */ }
-                                )
-                            }
                         }
                     }
                 }
-                OrderPayBox(array = array_2, navController = navController)
             }
+            OrderPayBox(
+                array = array_2,
+                navController = navController,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 24.dp)
+            )
         }
     }
 }
 
 @Composable
-fun OrderPayBox(array: Map<String, String>, navController: NavHostController) {
+fun OrderPayBox(
+    array: Map<String, String>,
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
     val items = array.toList()
+
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp)
-            .padding(bottom = 32.dp)
+        modifier = modifier
             .background(
                 brush = gradientBrush_2,
                 shape = RoundedCornerShape(8.dp)
-            ),
+            )
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 206.dp)
-                .padding(top = 20.dp, start = 29.dp, end = 29.dp)
+                .padding(top = 20.dp, start = 29.dp, end = 29.dp),
         ) {
             items.forEachIndexed { index, (title, price) ->
-                val isLastItem = index == items.lastIndex // Проверяем последний ли элемент
+                val isLastItem = index == items.lastIndex
 
                 Row(
                     modifier = Modifier
