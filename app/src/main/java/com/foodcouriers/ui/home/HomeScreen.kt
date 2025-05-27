@@ -1,6 +1,5 @@
 package com.foodcouriers.ui.home
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -32,26 +31,32 @@ fun HomeScreen(navController: NavHostController) {
     AppLayout(
         topBar = { HomeTopBar(navController = navController) },
         bottomBar = { BottomNavigationBar(navController) },
-        contentPadding = PaddingValues(10.dp),
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
             item {
                 Spacer(modifier = Modifier.height(16.dp))
+
                 HomeSearchBar()
+
                 HomeCarousel(imageList = imageList)
+
                 Spacer(modifier = Modifier.height(4.dp))
+
                 HomeFilters(
                     categories = categories,
                     selectedCategoryIndex = selectedCategoryIndex.intValue,
                     onCategorySelected = { selectedCategoryIndex.intValue = it }
                 )
+
                 HomeFiltersCard(
                     products = featuredProducts,
                     navController = navController
                 )
+
                 Spacer(modifier = Modifier.height(4.dp))
+
                 HomeMenuList(
                     products = mealMenuCards,
                     navController = navController

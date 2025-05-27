@@ -24,7 +24,7 @@ fun TopBar(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 26.dp)
+            .padding(top = 32.dp)
             .padding(bottom = 12.dp)
             .padding(horizontal = 32.dp),
         horizontalArrangement = Arrangement.SpaceBetween

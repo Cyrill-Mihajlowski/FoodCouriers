@@ -91,7 +91,7 @@ fun OnboardingSlide(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 8.dp),
+                .padding(top = 20.dp, bottom = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Bottom
         ) {
@@ -116,7 +116,9 @@ fun OnboardingSlide(
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
