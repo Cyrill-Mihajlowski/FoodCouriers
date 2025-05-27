@@ -2,7 +2,7 @@
 **Pet-проект для портфолио | C упором на UI/UX**
 
 <div align="center">
-  <img src="Show_2.png" width="600" alt="App Preview">
+  <img src="images/preview.png" width="600" alt="App Preview">
   <p>Основные экраны</p>
 </div>
 
