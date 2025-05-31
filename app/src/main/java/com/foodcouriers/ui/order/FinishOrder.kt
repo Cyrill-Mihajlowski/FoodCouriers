@@ -14,13 +14,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter.Companion.tint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -38,12 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
-import com.foodcouriers.ui.theme.Dimens
 import com.foodcouriers.ui.theme.Poppins
 import com.foodcouriers.ui.theme.Roboto
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.ButtonElevation
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -51,12 +44,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.stringResource
 import com.foodcouriers.domain.models.Screen
-import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 
 @Composable
 fun FinishOrder(navController: NavHostController) {
-    var rating by remember { mutableIntStateOf(0) }
+    var rating by remember { mutableStateOf(0) }
 
     val feedbackInput = remember { mutableStateOf("") }
     Box(
@@ -66,7 +58,7 @@ fun FinishOrder(navController: NavHostController) {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.pattern_5),
+            painter = painterResource(R.drawable.background_2),
             contentDescription = "Background",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
@@ -131,7 +123,6 @@ fun FinishOrder(navController: NavHostController) {
                                 rating = if (index + 1 == rating) 0 else index + 1
                             }
                         ) {
-
                             Icon(
                                 painter = if (index < rating) painterResource(R.drawable.ic_star_2) else painterResource(
                                     R.drawable.ic_star_1

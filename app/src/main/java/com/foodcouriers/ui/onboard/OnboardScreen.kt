@@ -77,7 +77,7 @@ fun OnboardScreen(navController: NavController) {
                                 onSkip = { coroutineScope.launch { modalBottomSheetState.show() } },
                                 currentPage = pagerState.currentPage,
                                 pageCount = slideNumber,
-                                imagePattern = R.drawable.pattern_3
+                                imagePattern = R.drawable.bg_decor_1
                             )
 
                             1 -> OnboardingSlide(
@@ -87,7 +87,7 @@ fun OnboardScreen(navController: NavController) {
                                 onSkip = { coroutineScope.launch { modalBottomSheetState.show() } },
                                 currentPage = pagerState.currentPage,
                                 pageCount = slideNumber,
-                                imagePattern = R.drawable.pattern_4
+                                imagePattern = R.drawable.bg_decor_2
                             )
                         }
                     }

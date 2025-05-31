@@ -2,6 +2,9 @@
     <!-- TODO: App name -->
     <string name="app_name">Food Couriers</string>
 
+    <!-- TODO: HomeTopBar -->
+    <string name="top_bar_location">Freedom way, Lekki phase</string>
+
     <!-- TODO: HomeSearBar search input -->
     <string name="SearchBarTitle">Search</string>
 
@@ -76,6 +79,7 @@
     <!-- TODO: DetailMenuScreen screnn -->
     <string name="detail_bottom_button">Add To Chart</string>
 
-
-
+    <!-- TODO: HomeMenuList screnn -->
+    <string name="menu_list_title">Popular Meal Menu</string>
+    <string name="menu_list_button">See All</string>
 </resources>

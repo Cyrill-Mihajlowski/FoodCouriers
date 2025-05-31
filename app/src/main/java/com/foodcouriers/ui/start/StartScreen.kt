@@ -38,7 +38,7 @@ fun StartScreen(
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.pattern_5),
+            painter = painterResource(R.drawable.background_2),
             contentDescription = "Background",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier

@@ -51,7 +51,7 @@ fun DefaultBackground() {
             .background(Color(0xFFFDFDFF))
     ) {
         Image(
-            painter = painterResource(R.drawable.pattern_6),
+            painter = painterResource(R.drawable.background_1),
             contentDescription = "Background",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier.fillMaxSize()

@@ -115,36 +115,39 @@ fun OnboardingSlide(
                     style = CustomStyles.OnboardButton
                 )
             }
-            Row(
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Absolute.SpaceAround
+        ) {
+            // 1. Кнопка "Skip" (слева)
+//                TextButton(onClick = onSkip) {
+            Text(
+                modifier = Modifier.clickable(onClick = onSkip),
+                text = stringResource(R.string.button_skip),
+                style = CustomStyles.OnboardButtonSkip
+            )
+//                }
+
+            PagerIndicator(
+                currentPage = currentPage,
+                pageCount = pageCount,
+                cyrcleColor = AppColors.Pink
+            )
+
+            // 3. Иконка стрелки (справа)
+            Icon(
+                painter = painterResource(R.drawable.red_arrow),
+                contentDescription = "red arrow",
+                tint = Color.Unspecified,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                TextButton(
-                    onClick = onSkip,
-                    modifier = Modifier.padding(0.dp),
-                ) {
-                    Text(
-                        text = stringResource(R.string.button_skip),
-                        style = CustomStyles.OnboardButtonSkip
-                    )
-                }
-                PagerIndicatorCustom(
-                    currentPage = currentPage,
-                    pageCount = pageCount,
-                )
-                Icon(
-                    painter = painterResource(R.drawable.red_arrow),
-                    contentDescription = "red arrow",
-                    tint = Color.Unspecified,
-                    modifier = Modifier
-                        .padding(20.dp)
-                        .size(14.dp)
-                        .clickable(onClick = onSkip),
-                )
-            }
+                    .clickable(onClick = onSkip)
+                    .size(18.dp),
+            )
         }
     }
 }
@@ -318,30 +321,4 @@ fun TextFieldCustom(
         ),
         singleLine = true,
     )
-}
-
-@Composable
-fun PagerIndicatorCustom(
-    currentPage: Int,
-    pageCount: Int,
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier.padding(top = 0.dp),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        repeat(pageCount) { page ->
-            val isSelected = currentPage == page
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .size(if (isSelected) 9.dp else 9.dp)
-                    .background(
-                        color = if (isSelected) AppColors.Pink else AppColors.Gray_3,
-                        shape = androidx.compose.foundation.shape.CircleShape
-                    )
-            )
-        }
-    }
 }

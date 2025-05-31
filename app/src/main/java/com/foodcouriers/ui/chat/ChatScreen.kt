@@ -157,7 +157,6 @@ fun InputField(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-//            .padding(horizontal = 24.dp)
             .padding(bottom = 32.dp)
     ) {
         Row(

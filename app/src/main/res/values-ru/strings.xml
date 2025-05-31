@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TODO: App name -->
+    <string name="app_name">Food Couriers</string>
+
+    <!-- TODO: HomeTopBar search input -->
+    <string name="top_bar_location">Путь свободы, фаза Лекки</string>
+
+    <!-- TODO: HomeSearBar search input -->
+    <string name="SearchBarTitle">Поиск</string>
+
+    <!-- TODO: HomeFilters categores -->
+    <string name="category_burger">Бургер</string>
+    <string name="category_pizza">Пицца</string>
+    <string name="category_sandwich">Сендвич</string>
+
+    <!-- TODO: OnboardScreen elements  -->
+    <string name="button_next">Далее</string>
+    <string name="button_skip">Пропустить</string>
+    <string name="button_sign_up">Регистрация</string>
+    <string name="button_sign_up_with_google">Регистрация через Google</string>
+    <string name="button_login">Войти</string>
+    <string name="button_login_with_google">Войти через Google</string>
+    <string name="checkbox_create_account">Создать аккаунт</string>
+    <string name="checkbox_login">Вход</string>
+    <string name="textbutton_forget">Забыли пароль?</string>
+    <string name="input_full_name">Полное имя</string>
+    <string name="input_email">Адрес электронной почты</string>
+    <string name="input_password">Пароль</string>
+    <string name="slide_title">Выберите любимое меню</string>
+    <string name="slide_text">Теперь ешьте хорошо, не выходя из дома. Выберите любимую еду одним кликом</string>
+    <string name="slide_title_2">Вкусная еда по низкой цене</string>
+    <string name="slide_text_2">Рестораны премиум-класса по доступным ценам</string>
+
+    <!-- TODO: BottomNavigationBar navigation items -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_profile">Профиль</string>
+    <string name="nav_order">Заказы</string>
+    <string name="nav_chat">Чат</string>
+
+    <!-- TODO: Profile screnn -->
+    <string name="profile_title_profile">Профиль</string>
+    <string name="profile_contact_info">Контактная информация</string>
+    <string name="profile_personal_info">Личная информация</string>
+    <string name="profile_button_edit">Изменить</string>
+    <string name="profile_your_name">Ваше имя</string>
+    <string name="profile_occupation">Род занятий</string>
+    <string name="profile_empoyer">Работодатель</string>
+    <string name="profile_country">Страна</string>
+    <string name="profile_phone_number">Номер телефона</string>
+    <string name="profile_email">Эл. почта</string>
+
+    <!-- TODO: Order screnn -->
+    <string name="order_title_order_detail">Детали заказа</string>
+    <string name="order_card_title_1">Подытог</string>
+    <string name="order_card_title_2">Доставка</string>
+    <string name="order_card_title_3">Скидка</string>
+    <string name="order_card_title_4">Итого</string>
+    <string name="order_bottom_button">Оформить заказ</string>
+
+    <!-- TODO: FinishOrder screnn -->
+    <string name="finish_order_input">Оставьте отзыв</string>
+    <string name="finish_order_button_submit">Отправить</string>
+    <string name="finish_order_button_skip">Пропустить</string>
+
+    <!-- TODO: Chat screnn -->
+    <string name="chat_title">Чат</string>
+    <string name="chat_search_bar_title">Курьер печатает...</string>
+
+    <!-- TODO: LocationScreen screnn -->
+    <string name="location_input_title">Укажите ваше местоположение</string>
+    <string name="location_bottom_button">Сохранить местоположение</string>
+    <string name="location_card_title">Ваш адрес</string>
+    <string name="location_card_text">ул. Свободы, 109, Виктория Айленд, Лекки, Лагос.</string>
+
+    <!-- TODO: MealMenuExpandedScreen screnn -->
+    <string name="meal_menu_title">Меню</string>
+    <string name="meal_menu_input_title">Блюда</string>
+
+    <!-- TODO: DetailMenuScreen screnn -->
+    <string name="detail_bottom_button">В корзину</string>
+
+    <!-- TODO: HomeMenuList screnn -->
+    <string name="menu_list_title">Популярные блюда</string>
+    <string name="menu_list_button">Ещё</string>
+</resources>

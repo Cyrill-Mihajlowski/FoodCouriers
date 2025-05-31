@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
 import com.foodcouriers.domain.models.Screen
+import com.foodcouriers.ui.components.CustomButton
 import com.foodcouriers.ui.components.TopCustomButton
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
@@ -241,32 +242,22 @@ fun OrderPayBox() {
             }
         }
 
-        TextButton(
+        CustomButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .padding(horizontal = 10.dp)
-                .padding(bottom = 10.dp)
+                .padding(start = 10.dp, end = 10.dp, bottom = 10.dp)
                 .background(
                     brush = gradientBrush_2,
                     shape = RoundedCornerShape(8.dp),
                 ),
-            onClick = { },
-            shape = RoundedCornerShape(8.dp),
-            contentPadding = PaddingValues(
-                top = 16.dp,
-                bottom = 16.dp
+            text = stringResource(R.string.location_bottom_button),
+            textStyle = TextStyle(
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                color = Color(0xFFF6FAFE),
             )
-        ) {
-            Text(
-                text = stringResource(R.string.location_bottom_button),
-                style = TextStyle(
-                    fontFamily = Poppins,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    color = Color(0xFFF6FAFE),
-                )
-            )
-        }
+        )
     }
 }

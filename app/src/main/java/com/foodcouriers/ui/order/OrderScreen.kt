@@ -22,7 +22,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,6 +41,7 @@ import com.foodcouriers.R
 import com.foodcouriers.domain.models.OrderCardItems
 import com.foodcouriers.domain.models.Screen
 import com.foodcouriers.ui.components.AppLayout
+import com.foodcouriers.ui.components.CustomButton
 import com.foodcouriers.ui.components.TopBar
 import com.foodcouriers.ui.theme.AppColors
 import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
@@ -184,7 +184,7 @@ fun OrderPayBox(
             }
         }
 
-        TextButton(
+        CustomButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
@@ -194,26 +194,15 @@ fun OrderPayBox(
                     color = Color(0xFFFEFEFF),
                     shape = RoundedCornerShape(8.dp),
                 ),
-            onClick = { },
-            shape = RoundedCornerShape(8.dp),
-            contentPadding = PaddingValues(
-                top = 16.dp,
-                bottom = 16.dp
-            )
-        ) {
-            Text(
-                modifier = Modifier.clickable(
-                    onClick = { navController.navigate(Screen.FinishOrder.route) }
-                ),
-                text = stringResource(R.string.order_bottom_button),
-                style = TextStyle(
-                    fontFamily = Poppins,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    brush = gradientBrush_2,
-                )
-            )
-        }
+            text = stringResource(R.string.order_bottom_button),
+            textStyle = TextStyle(
+                fontFamily = Poppins,
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                brush = gradientBrush_2,
+            ),
+            onClick = { navController.navigate(Screen.FinishOrder.route) }
+        )
     }
 }
 
@@ -328,8 +317,7 @@ fun OrderCustomIcon(
         Icon(
             painter = painterResource(id = imageResId),
             contentDescription = "Icon",
-            modifier = Modifier
-                .size(10.dp),
+            modifier = Modifier.size(10.dp),
             tint = Color.Unspecified
         )
     }

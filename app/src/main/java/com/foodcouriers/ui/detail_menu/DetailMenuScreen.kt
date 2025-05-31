@@ -84,9 +84,7 @@ import kotlinx.coroutines.launch
 fun DetailMenuScreen(
     navController: NavHostController,
 ) {
-    val modalBottomSheetState = rememberModalBottomSheetState(
-//        skipPartiallyExpanded = true
-    )
+    val modalBottomSheetState = rememberModalBottomSheetState()
     val coroutineScope = rememberCoroutineScope()
     var isSheetVisible by remember { mutableStateOf(true) }
 
@@ -337,7 +335,6 @@ fun BottomButton(navController: NavHostController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-//                .padding(horizontal = 25.dp)
                 .padding(bottom = 20.dp)
                 .background(
                     color = Color(0xFFD61355),

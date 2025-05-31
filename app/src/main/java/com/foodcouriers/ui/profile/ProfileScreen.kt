@@ -28,9 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
 import com.foodcouriers.ui.components.AppLayout
-import com.foodcouriers.ui.components.BottomCustomButton
+import com.foodcouriers.ui.components.CustomButton
 import com.foodcouriers.ui.components.TopBar
 import com.foodcouriers.ui.theme.AppColors
+import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 import com.foodcouriers.ui.theme.CustomStyles
 
 @Composable
@@ -114,7 +115,24 @@ fun ProfileScreen(navController: NavHostController) {
                 )
             }
         }
-        BottomCustomButton()
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 30.dp),
+        ) {
+            CustomButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .background(
+                        brush = gradientBrush_2,
+                        shape = RoundedCornerShape(8.dp),
+                    ),
+                text = stringResource(R.string.profile_button_edit),
+                textStyle = CustomStyles.OnboardButton,
+            )
+        }
     }
 }
 

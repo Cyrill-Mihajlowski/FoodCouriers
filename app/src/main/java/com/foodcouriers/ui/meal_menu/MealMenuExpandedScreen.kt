@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Card
@@ -42,19 +41,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.foodcouriers.R
-import com.foodcouriers.domain.models.MealItems
 import com.foodcouriers.ui.components.BottomNavigationBar
-import com.foodcouriers.ui.components.HomeCarousel
-import com.foodcouriers.ui.components.HomeFilters
-import com.foodcouriers.ui.components.HomeFiltersCard
-import com.foodcouriers.ui.components.HomeMenuList
-import com.foodcouriers.ui.components.HomeSearchBar
-import com.foodcouriers.ui.components.HomeTopBar
 import com.foodcouriers.ui.components.TopCustomButton
 import com.foodcouriers.ui.home.HomeMockData
-import com.foodcouriers.ui.location.OrderPayBox
 import com.foodcouriers.ui.theme.AppColors
-import com.foodcouriers.ui.theme.AppColors.gradientBrush_2
 import com.foodcouriers.ui.theme.CustomStyles
 import com.foodcouriers.ui.theme.Dimens
 import com.foodcouriers.ui.theme.Roboto
@@ -74,7 +64,7 @@ fun MealMenuExpandedScreen(navController: NavHostController) {
                 .background(Color(0xFFFEFEFF)),
         ) {
             Image(
-                painter = painterResource(R.drawable.pattern_6),
+                painter = painterResource(R.drawable.background_1),
                 contentDescription = "Background",
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier
